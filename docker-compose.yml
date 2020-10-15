@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  empservice:
+    image: ${DOCKER_REGISTRY-}empservice
+    build:
+      context: .
+      dockerfile: EmpService\Dockerfile
