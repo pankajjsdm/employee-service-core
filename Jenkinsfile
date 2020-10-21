@@ -1,25 +1,9 @@
-pipeline {
-    agent any
-    stages {
-        stage('Restore Packages') {
-            steps {
-                sh 'dotnet restore'
-            }
-        }
-		stage('Clean') {
-            steps {
-                sh 'dotnet clean'
-            }
-        }
-        stage('Build') {
-            steps {
-                sh 'dotnet build --configuration Release'
-            }
-        }
-		stage('Create Package') {
-            steps {
-                sh 'dotnet pack --no-build --output nupkgs'
-            }
-        }               
+node {
+    stage('Checkout git repo') {
+      git branch: 'master', url: 'https://github.com/pankajjsdm/EMPService'
     }
+    stage('build and publish') {
+        sh(script: "dotnet publish EmpService.sln.sln -c Release ", returnStdout: true)
+    }
+   
 }
