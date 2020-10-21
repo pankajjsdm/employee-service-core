@@ -9,26 +9,26 @@ pipeline {
      git credentialsId: 'Github', url: 'https://github.com/pankajjsdm/EMPService.git/', branch: 'master'
      }
   }
-  stage('Restore packages'){
+  stage('Restore'){
    steps{
-      sh "dotnet restore EmpService/EmpService.csproj"
+      bat 'donet restore EmpService.sln'
      }
   }
     stage('Clean'){
     steps{
-        sh "dotnet clean EmpService/EmpService.csproj"
+        bat "dotnet clean EmpService.sln"
      }
    }
   stage('Build'){
    steps{
-      sh "dotnet build EmpService/EmpService.csproj --configuration Release"
+      bat "dotnet build EmpService.sln --configuration Release"
     }
  } 
     stage('Publish'){
      steps{
-       sh "dotnet publish EmpService/EmpService.csproj "
+       bat "dotnet publish EmpService.sln "
      }
-	 }
-	 }
+    }
+   }
 }
 
