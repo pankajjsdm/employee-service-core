@@ -3,7 +3,7 @@ pipeline {
     environment {
         dotnet ='C:\\Program Files (x86)\\dotnet\\'
         }     
-   
+   stages{
  stage('Checkout') {
     steps {
      git credentialsId: 'Github', url: 'https://github.com/pankajjsdm/EMPService.git/', branch: 'master'
@@ -28,6 +28,7 @@ pipeline {
      steps{
        sh "dotnet publish EmpService/EmpService.csproj "
      }
+	 }
 	 }
 }
 
