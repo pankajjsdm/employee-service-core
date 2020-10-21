@@ -11,7 +11,7 @@ pipeline {
   }
   stage('Restore'){
    steps{
-      bat 'donet restore EmpService.sln'
+      bat 'dotnet restore EmpService.sln'
      }
   }
     stage('Clean'){
